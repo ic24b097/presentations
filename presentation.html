@@ -107,10 +107,10 @@
                     <h2>Synchronous (Bsp. RPC)</h2>
                     <div class="mermaid">
                         sequenceDiagram
-                            UI->>Edge: send email
-                            Edge->>Processor: forward
-                            Processor->>Edge: finished
-                            Edge->>User: finished
+                            UI->>+Edge: send email
+                            Edge->>+Processor: process email
+                            Processor-->>-Edge: finished
+                            Edge-->>-UI: finished
                     </div>
                 </div>
                 <div class="divider"></div>
@@ -118,8 +118,8 @@
                     <h2>Messaging-/Event-Based</h2>
                     <div class="mermaid">
                         sequenceDiagram
-                            UI->>Edge: send email
-                            Edge->>User: task received
+                            UI->>+Edge: send email
+                            Edge-->>-UI: task received
                             Edge->>Processor: queue Task
                     </div>
                 </div>

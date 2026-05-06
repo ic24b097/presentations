@@ -101,6 +101,17 @@
         .mermaid {
             font-size: 1.2rem;
         }
+        .bullet-points {
+            list-style-type: disc;
+            text-align: left;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+        .bullet-points li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+        }
     </style>
 </head>
 <body>
@@ -118,6 +129,11 @@
                             Processor-->>-Edge: finished
                             Edge-->>-UI: finished
                     </div>
+                    <ul class="bullet-points">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
                 <div class="divider"></div>
                 <div class="comparison-side">
@@ -128,6 +144,11 @@
                             Edge-->>-UI: task received
                             Edge->>Processor: queue Task
                     </div>
+                    <ul class="bullet-points">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
             </div>
         </div>

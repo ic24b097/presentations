@@ -19,6 +19,7 @@
             width: 100vw;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: absolute;
@@ -29,6 +30,17 @@
         }
         .slide.active {
             opacity: 1;
+        }
+        .slide-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: bold;
+        }
+        .slide-content {
+            text-align: center;
         }
         .slide h1 {
             font-size: 3rem;
@@ -53,16 +65,28 @@
 </head>
 <body>
     <div class="slide active">
-        <h1>Slide 1</h1>
+        <div class="slide-header">MQ:</div>
+        <div class="slide-content">
+            <h1>Slide 1</h1>
+        </div>
     </div>
     <div class="slide">
-        <h1>Slide 2</h1>
+        <div class="slide-header">MQ:</div>
+        <div class="slide-content">
+            <h1>Slide 2</h1>
+        </div>
     </div>
     <div class="slide">
-        <h1>Slide 3</h1>
+        <div class="slide-header">Microservices:</div>
+        <div class="slide-content">
+            <h1>Slide 3</h1>
+        </div>
     </div>
     <div class="slide">
-        <h1>Slide 4</h1>
+        <div class="slide-header">Message Broker:</div>
+        <div class="slide-content">
+            <h1>Slide 4</h1>
+        </div>
     </div>
 
     <div class="progress-container">
@@ -89,19 +113,30 @@
             showSlide(currentSlide);
         }
 
-        // Keyboard navigation (right arrow or space)
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') {
                 e.preventDefault();
                 nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
             }
         });
 
-        // Click navigation (right click)
+        // Click navigation
         document.addEventListener('click', (e) => {
             if (e.button === 2) { // Right mouse button
                 e.preventDefault();
                 nextSlide();
+            } else if (e.button === 0) { // Left mouse button
+                e.preventDefault();
+                prevSlide();
             }
         });
 

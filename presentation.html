@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentation</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -21,12 +22,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             position: absolute;
             top: 0;
             left: 0;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
+            padding: 20px;
         }
         .slide.active {
             opacity: 1;
@@ -35,16 +36,22 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            font-size: 1.2rem;
-            color: #666;
+            font-size: 1.5rem;
+            color: #333;
             font-weight: bold;
         }
-        .slide-content {
-            text-align: center;
+        .slide-subtitle {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            font-size: 1rem;
+            color: #666;
+            max-width: 40%;
         }
-        .slide h1 {
-            font-size: 3rem;
-            color: #333;
+        .slide-content {
+            margin-top: 120px;
+            text-align: center;
+            width: 100%;
         }
         .progress-container {
             position: fixed;
@@ -61,31 +68,59 @@
             width: 0%;
             transition: width 0.5s linear;
         }
+        .mermaid {
+            margin: 20px auto;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="slide active">
-        <div class="slide-header">MQ:</div>
+        <div class="slide-header">Messaging-/Event-Based communication</div>
+        <div class="slide-subtitle">Compare the concept of Messaging-/Event-Based communication over synchronous communications (like RPC)</div>
         <div class="slide-content">
-            <h1>Slide 1</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
     </div>
     <div class="slide">
-        <div class="slide-header">MQ:</div>
+        <div class="slide-header">Messaging-/Event-Based communication</div>
+        <div class="slide-subtitle">How does the concept of loose-coupling in Event-Driven Architecture benefit the system design?</div>
         <div class="slide-content">
-            <h1>Slide 2</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
     </div>
     <div class="slide">
-        <div class="slide-header">Microservices:</div>
+        <div class="slide-header">Messaging-/Event-Based communication</div>
+        <div class="slide-subtitle">Discuss the role of message brokers in asynchronous messaging communication</div>
         <div class="slide-content">
-            <h1>Slide 3</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
     </div>
     <div class="slide">
-        <div class="slide-header">Message Broker:</div>
+        <div class="slide-header">Microservices</div>
+        <div class="slide-subtitle">Discuss the characteristics of microservices and how they differ from traditional web services</div>
         <div class="slide-content">
-            <h1>Slide 4</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="slide-header">Message Broker</div>
+        <div class="slide-subtitle">Compare the Message Brokers RabbitMQ and Kafka to each other. Find examples where each would be appropriate.</div>
+        <div class="slide-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="slide-header">UML - Sequenzdiagram</div>
+        <div class="slide-subtitle">Prepare a sample embedded Mermaid diagram</div>
+        <div class="slide-content">
+            <div class="mermaid">
+                sequenceDiagram
+                    participant Alice
+                    participant Bob
+                    Alice->>Bob: Hello Bob, how are you?
+                    Bob-->>Alice: I'm good, thanks!
+            </div>
         </div>
     </div>
 
@@ -94,6 +129,8 @@
     </div>
 
     <script>
+        mermaid.initialize({ startOnLoad: false });
+        
         const slides = document.querySelectorAll('.slide');
         const progressBar = document.getElementById('progressBar');
         let currentSlide = 0;
@@ -106,6 +143,15 @@
             // Update progress bar
             const progress = ((index + 1) / slides.length) * 100;
             progressBar.style.width = `${progress}%`;
+            
+            // Render mermaid diagrams on active slide
+            const activeSlide = slides[index];
+            const mermaidElements = activeSlide.querySelectorAll('.mermaid');
+            mermaidElements.forEach(el => {
+                const id = 'mermaid-' + Math.random().toString(36).substr(2, 9);
+                el.id = id;
+                mermaid.init(undefined, el);
+            });
         }
 
         function nextSlide() {

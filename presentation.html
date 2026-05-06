@@ -179,10 +179,10 @@
         document.addEventListener('click', (e) => {
             if (e.button === 2) { // Right mouse button
                 e.preventDefault();
-                nextSlide();
+                prevSlide();
             } else if (e.button === 0) { // Left mouse button
                 e.preventDefault();
-                prevSlide();
+                nextSlide();
             }
         });
 

@@ -162,14 +162,68 @@
         <div class="slide-header">Messaging-/Event-Based communication</div>
         <div class="slide-subtitle">How does the concept of loose-coupling in Event-Driven Architecture benefit the system design?</div>
         <div class="slide-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+             <ul class="bullet-points">
+                        <li>Independence of Components: As long as Schemas are fulfilled, and responsibilities are defined.</li><ul>
+                            
+                        <li>Localized changes easier</li>
+                            <li>Separation of concerns</li>
+                            <li>Stakeholder perspective</li>
+                        </ul>
+                        <li>Resilience to failure</li><ul>
+                        <li>Processing queues after downtime</li>
+                            <li>Redistributing loads</li>
+                            <li>Queues dampen Load peaks</li>
+                        </ul>
+                 <li>Flexible Scaling and Extensibility</li>
+                 
+                    </ul>
         </div>
     </div>
     <div class="slide">
         <div class="slide-header">Messaging-/Event-Based communication</div>
         <div class="slide-subtitle">Discuss the role of message brokers in asynchronous messaging communication</div>
         <div class="slide-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h2>What is a Message Broker?</h2>
+  <ul>
+    <li>Middleware between producers and consumers</li>
+    <li>Receives, stores, and forwards messages</li>
+    <li>Decouples components in time and space</li>
+  </ul>
+
+  <div class="box">
+    Service A → Broker → Service B / C / D
+  </div>
+
+  <h2>Core Responsibilities</h2>
+  <ul>
+    <li><strong>Buffering:</strong> absorbs traffic spikes</li>
+    <li><strong>Routing:</strong> directs messages to correct consumers</li>
+    <li><strong>Decoupling:</strong> no direct service dependencies</li>
+    <li><strong>Reliability:</strong> retries, acknowledgments, dead-letter queues</li>
+    <li><strong>Persistence:</strong> optional durable message storage</li>
+    <li><strong>Load leveling:</strong> consumers process at own pace</li>
+  </ul>
+
+  <h2>Messaging Patterns</h2>
+  <ul>
+    <li><strong>Queue:</strong> one consumer processes each message</li>
+    <li><strong>Publish/Subscribe:</strong> multiple consumers receive events</li>
+    <li><strong>Event Stream:</strong> replayable log of events</li>
+  </ul>
+
+  <h2>System Impact</h2>
+  <ul>
+    <li>Enables asynchronous execution</li>
+    <li>Supports independent scaling of components</li>
+    <li>Prevents cascading failures</li>
+    <li>Allows adding new consumers without changing producers</li>
+  </ul>
+
+  <h2>Key Idea</h2>
+  <div class="box">
+    "A message broker acts as a durable post office for your system."
+  </div>
+
         </div>
     </div>
     <div class="slide">
